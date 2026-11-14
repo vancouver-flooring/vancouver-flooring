@@ -1,0 +1,74 @@
+# Pages CMS admin configuration — https://pagescms.org
+# Slava and Alexander log in at https://app.pagescms.org with GitHub
+# and edit the two entries below. Saving commits to this repo and
+# GitHub Pages republishes the site in about a minute.
+
+media:
+  input: media
+  output: /media
+  rename: safe
+
+content:
+  - name: gallery
+    label: Gallery (our work)
+    type: file
+    path: data/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: media
+        label: Photo or video
+        description: "JPG/PNG photo or MP4/MOV video (keep videos under ~90 MB)."
+        type: file
+        options:
+          categories: [image, video]
+          extensions: [jpg, jpeg, png, webp, mp4, mov, webm, m4v]
+      - name: category
+        label: Flooring type
+        type: select
+        options:
+          values: [Stairs, Floors, Walls & custom, Hardwood, Engineered, Laminate, Vinyl plank, Tile, Refinishing, Other]
+      - name: location
+        label: Area (e.g. Burnaby)
+        type: string
+      - name: date
+        label: Date of job
+        type: date
+      - name: description
+        label: Description
+        type: text
+      - name: featured
+        label: Use as the big photo at the top of the page
+        type: boolean
+      - name: hidden
+        label: Hide from the site
+        type: boolean
+
+  - name: site
+    label: Contact info & text
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: businessName
+        label: Business name
+        type: string
+      - name: tagline
+        label: Intro sentence under the headline
+        type: text
+      - name: phone
+        label: Phone
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: hours
+        label: Hours
+        type: string
+      - name: serviceArea
+        label: Areas you serve
+        type: text

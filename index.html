@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vancouver Flooring — Slava &amp; Alexander</title>
+  <meta name="description" content="Hardwood, engineered, laminate, vinyl, tile and stair installation across Greater Vancouver. A two-person team: Slava and Alexander.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top" aria-label="Back to top">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32"><path d="M4 26h6v-5h6v-5h6v-5h6V6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <span class="brand-text">
+      <span data-site="businessName">Vancouver Flooring</span>
+      <small>Slava &amp; Alexander</small>
+    </span>
+  </a>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="nav-link" href="#work">Our work</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#contact">Contact</a>
+    <a class="nav-phone js-phone" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span data-site="phone">(604) 000-0000</span>
+    </a>
+    <a class="btn btn-small" href="#contact">Get a quote</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Greater Vancouver · All types of flooring</p>
+      <h1>Floors laid right, <em>by the two people</em> you actually talk to.</h1>
+      <p class="lead" data-site="tagline">Slava and Alexander install and refinish hardwood, engineered, laminate, vinyl plank, tile and stairs — from a single room to a whole house.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Get a free quote</a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
+      </div>
+    </div>
+    <div class="hero-photo" id="heroPhoto" aria-hidden="true"></div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="section-head">
+      <h2>Our work</h2>
+      <p>Real jobs, photographed by us on site. Tap any picture for details.</p>
+    </div>
+    <div class="filters" id="filters" role="tablist" aria-label="Filter by flooring type"></div>
+    <div class="grid" id="grid"></div>
+    <div class="more-wrap"><button class="btn btn-ghost" id="moreBtn" hidden>Show more</button></div>
+    <p class="empty" id="empty" hidden>No projects in this category yet.</p>
+  </section>
+
+  <section id="services" class="section section-alt">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2>From the first step to the last board</h2>
+      <p>Supply-and-install or install-only. We handle prep, levelling, trims and clean-up.</p>
+    </div>
+
+    <div class="bento">
+      <a class="bento-card bento-big" href="#work" data-filter="Stairs" style="background-image:url('media/work/work-035.jpg')">
+        <span class="bento-tag">Our speciality</span>
+        <div class="bento-body">
+          <h3>Custom stairs</h3>
+          <p>Treads, risers and nosings for straight, curved, floating and open staircases, matched to your floor and finished to the last edge.</p>
+          <span class="bento-link">See 96 staircases →</span>
+        </div>
+      </a>
+      <a class="bento-card" href="#work" data-filter="Floors" style="background-image:url('media/work/work-056.jpg')">
+        <div class="bento-body">
+          <h3>Floors</h3>
+          <p>Hardwood, engineered, laminate, vinyl plank and tile, including inlays and curves.</p>
+          <span class="bento-link">See floors →</span>
+        </div>
+      </a>
+      <a class="bento-card" href="#work" data-filter="Walls &amp; custom" style="background-image:url('media/work/work-052.jpg')">
+        <div class="bento-body">
+          <h3>Wood walls &amp; features</h3>
+          <p>Feature walls, fireplace surrounds, panelling and built-ins.</p>
+          <span class="bento-link">See walls →</span>
+        </div>
+      </a>
+    </div>
+
+    <h3 class="sub-head">Every kind of floor</h3>
+    <ul class="floor-types">
+      <li><span class="ft-swatch ft-hardwood"></span><div><strong>Hardwood</strong><span>Solid oak, maple, walnut and more: nail-down or glue-down.</span></div></li>
+      <li><span class="ft-swatch ft-engineered"></span><div><strong>Engineered</strong><span>Wide planks and herringbone: floating, glued or nailed.</span></div></li>
+      <li><span class="ft-swatch ft-laminate"></span><div><strong>Laminate</strong><span>Quick and budget-friendly, with proper underlay.</span></div></li>
+      <li><span class="ft-swatch ft-vinyl"></span><div><strong>Vinyl plank</strong><span>Waterproof: for kitchens, basements and rentals.</span></div></li>
+      <li><span class="ft-swatch ft-tile"></span><div><strong>Tile</strong><span>Porcelain and ceramic on a flat, solid base.</span></div></li>
+      <li><span class="ft-swatch ft-refinish"></span><div><strong>Refinishing</strong><span>Sanding, staining and recoating for tired hardwood.</span></div></li>
+    </ul>
+
+    <ol class="process">
+      <li><span>1</span><div><strong>Free estimate</strong>We come out, measure, and give you a clear written price.</div></li>
+      <li><span>2</span><div><strong>Prep &amp; install</strong>Old floor out, subfloor levelled, new floor and stairs in.</div></li>
+      <li><span>3</span><div><strong>Clean finish</strong>Trims and transitions fitted, mess hauled away.</div></li>
+    </ol>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="about-media">
+      <img class="about-img about-img-main" src="media/work/work-003.jpg" alt="Floating stair treads with a glass railing" loading="lazy">
+      <img class="about-img about-img-inset" src="media/work/work-011.jpg" alt="Herringbone stair landing" loading="lazy">
+      <div class="about-badge"><strong>100+</strong><span>projects in<br>our gallery</span></div>
+    </div>
+
+    <div class="about-text">
+      <p class="eyebrow">About us</p>
+      <h2>Two specialists, start&nbsp;to&nbsp;finish</h2>
+      <p class="about-lead">We're a small team, not a call centre. The people who quote your job are the people who show up and do the work, so nothing gets lost between the estimate and the last board.</p>
+
+      <div class="team">
+        <div class="person">
+          <span class="avatar">S</span>
+          <div><strong>Slava</strong><span>Co-owner · installer</span></div>
+        </div>
+        <div class="person">
+          <span class="avatar avatar-alt">A</span>
+          <div><strong>Alexander</strong><span>Co-owner · installer</span></div>
+        </div>
+      </div>
+
+      <ul class="promises">
+        <li>Free on-site estimates with a clear written price</li>
+        <li>The same two people from quote to clean-up</li>
+        <li>Stairs and every type of floor, under one team</li>
+        <li>Tidy job sites, with old flooring hauled away</li>
+      </ul>
+
+      <p class="area">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+        <span>Serving <span data-site="serviceArea">Vancouver, Burnaby, Richmond, North &amp; West Vancouver, Coquitlam, Surrey and nearby</span></span>
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-dark">
+    <div class="section-head">
+      <h2>Get a free quote</h2>
+      <p>Send us a few photos of the room and rough measurements — we'll get back to you the same day.</p>
+    </div>
+    <div class="contact-cards">
+      <a class="contact-card js-phone" href="#">
+        <span class="label">Call or text</span>
+        <span class="value" data-site="phone">(604) 000-0000</span>
+      </a>
+      <a class="contact-card" id="emailLink" href="#">
+        <span class="label">Email</span>
+        <span class="value" data-site="email">your-email@example.com</span>
+      </a>
+      <div class="contact-card">
+        <span class="label">Hours</span>
+        <span class="value" data-site="hours">Mon–Sat, 8am–6pm</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> <span data-site="businessName">Vancouver Flooring</span> · Slava &amp; Alexander</span>
+  <span>Greater Vancouver, BC</span>
+</footer>
+
+<dialog id="lightbox" aria-label="Project details">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-media" id="lbMedia"></div>
+  <div class="lb-info">
+    <p class="lb-meta" id="lbMeta"></p>
+    <h3 id="lbTitle"></h3>
+    <p id="lbDesc"></p>
+  </div>
+</dialog>
+
+<script src="app.js?v=3"></script>
+</body>
+</html>
