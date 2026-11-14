@@ -46,6 +46,32 @@ function applySite(site) {
   }
   if (site.email) $("emailLink").href = "mailto:" + site.email;
   $("year").textContent = new Date().getFullYear();
+  syncStructuredData(site);
+}
+
+// Keep Google's business details in step with what the owners edit in the admin
+function syncStructuredData(site) {
+  const el = $("ldBusiness");
+  if (!el) return;
+  try {
+    const ld = JSON.parse(el.textContent);
+    if (site.businessName) ld.name = site.businessName;
+    if (site.phone) ld.telephone = site.phone.replace(/[^\d+]/g, "").replace(/^\+?1?(\d{3})(\d{3})(\d{4})$/, "+1-$1-$2-$3");
+    if (site.email) ld.email = site.email;
+    el.textContent = JSON.stringify(ld);
+  } catch (e) {
+    console.warn("Structured data not updated", e);
+  }
+}
+
+// Descriptive alt text helps image search: "Curved staircase – stairs in Burnaby by Vancouver Flooring"
+function altText(item) {
+  const what = item.title || "Flooring project";
+  const c = (item.category || "").toLowerCase();
+  // Skip the category when the title already says it ("Staircase" / Stairs)
+  const cat = c && !what.toLowerCase().includes(c.replace(/s$/, "").split(" ")[0]) ? " – " + c : "";
+  const where = item.location ? " in " + item.location : " in Greater Vancouver";
+  return what + cat + where + " by Vancouver Flooring";
 }
 
 function mediaEl(item, { controls = false, thumb = false } = {}) {
@@ -66,7 +92,7 @@ function mediaEl(item, { controls = false, thumb = false } = {}) {
   }
   const img = document.createElement("img");
   img.src = src;
-  img.alt = item.title || "Flooring project";
+  img.alt = altText(item);
   img.loading = thumb ? "lazy" : "eager";
   return img;
 }
@@ -163,8 +189,12 @@ function setHero() {
   const hero = $("heroPhoto");
   const pick = items.find((i) => i.featured && i.media && !isVideo(i.media))
             || items.find((i) => i.media && !isVideo(i.media));
-  if (pick) hero.style.backgroundImage = `url("${mediaUrl(pick.media)}")`;
-  else hero.classList.add("wood");
+  // index.html already shows a default photo (preloaded for speed); only swap
+  // it if the owners marked a different photo as featured in the admin.
+  if (pick && !hero.style.backgroundImage.includes(mediaUrl(pick.media))) {
+    hero.style.backgroundImage = `url("${mediaUrl(pick.media)}")`;
+  }
+  if (pick) hero.setAttribute("aria-label", altText(pick));
 }
 
 // Light/dark switch. Follows the device setting until the visitor picks
