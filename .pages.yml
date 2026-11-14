@@ -31,7 +31,7 @@ content:
         label: Flooring type
         type: select
         options:
-          values: [Stairs, Floors, Walls & custom, Hardwood, Engineered, Laminate, Vinyl plank, Tile, Refinishing, Other]
+          values: [Stairs, Floors, Walls & custom, Hardwood, Engineered, Laminate, Vinyl plank, Other]
       - name: location
         label: Area (e.g. Burnaby)
         type: string
