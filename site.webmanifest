@@ -1,0 +1,13 @@
+{
+  "name": "Vancouver Flooring — Slava & Alexander",
+  "short_name": "Vancouver Flooring",
+  "icons": [
+    { "src": "favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#f5efe6",
+  "theme_color": "#2b2018"
+}

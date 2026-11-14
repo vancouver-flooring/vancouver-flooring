@@ -7,10 +7,37 @@
   --accent-ink: #fff8ef;
   --dark: #241a13;
   --dark-ink: #f3e9dc;
+  --bar-bg: rgba(245, 239, 230, .92);
+  --bar-bg-solid: rgba(245, 239, 230, .97);
+  --mark-bg: #2b2018;
+  --accent-hover: #93592a;
+  color-scheme: light;
   --line: rgba(43, 32, 24, .14);
   --radius: 14px;
   --serif: "Fraunces", Georgia, serif;
   --sans: "Manrope", system-ui, sans-serif;
+}
+
+/* Dark theme: neutral charcoal with the same wood-tone accent.
+   Declaring our own dark palette (plus the color-scheme meta tag in
+   index.html) stops browsers from auto-darkening the cream design into brown. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141516;
+    --bg-alt: #1c1e20;
+    --ink: #eeece8;
+    --muted: #a3a09a;
+    --accent: #c98a4e;
+    --accent-ink: #17120d;
+    --accent-hover: #d99c62;
+    --dark: #0d0e0f;
+    --dark-ink: #eeece8;
+    --line: rgba(255, 255, 255, .1);
+    --bar-bg: rgba(20, 21, 22, .88);
+    --bar-bg-solid: rgba(20, 21, 22, .97);
+    --mark-bg: #26282b;
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -27,7 +54,7 @@ h3 { font-size: 1.2rem; }
   background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; cursor: pointer;
   font-family: var(--sans); font-size: 1rem; transition: transform .15s, background .15s;
 }
-.btn:hover { transform: translateY(-1px); background: #93592a; border-color: #93592a; }
+.btn:hover { transform: translateY(-1px); background: var(--accent-hover); border-color: var(--accent-hover); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .btn-small { padding: .5em 1.1em; font-size: .9rem; }
@@ -35,15 +62,15 @@ h3 { font-size: 1.2rem; }
 /* Top bar */
 .topbar {
   position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding: .8rem clamp(16px, 4vw, 48px); background: rgba(245, 239, 230, .92); backdrop-filter: blur(8px);
+  padding: .8rem clamp(16px, 4vw, 48px); background: var(--bar-bg); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
 .topbar { transition: padding .25s, box-shadow .25s, background .25s; }
-.topbar.scrolled { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 10px 30px -18px rgba(43, 32, 24, .45); background: rgba(245, 239, 230, .97); }
+.topbar.scrolled { padding-top: .5rem; padding-bottom: .5rem; box-shadow: 0 10px 30px -18px rgba(43, 32, 24, .45); background: var(--bar-bg-solid); }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
 .brand-mark {
   flex: none; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
-  background: var(--ink); color: #e3b17e; transition: transform .3s;
+  background: var(--mark-bg); color: #e3b17e; transition: transform .3s;
 }
 .brand:hover .brand-mark { transform: rotate(-6deg); }
 .brand-mark svg { width: 26px; height: 26px; }
@@ -238,7 +265,7 @@ h3 { font-size: 1.2rem; }
 .person span { color: var(--muted); font-size: .85rem; }
 .avatar {
   flex: none; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--ink); color: #e3b17e !important; font: 600 1.4rem var(--serif) !important;
+  background: var(--mark-bg); color: #e3b17e !important; font: 600 1.4rem var(--serif) !important;
 }
 .avatar-alt { background: var(--accent); color: var(--accent-ink) !important; }
 
