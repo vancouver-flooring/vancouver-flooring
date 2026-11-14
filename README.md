@@ -28,13 +28,6 @@ Optional: a custom domain such as `vancouverflooring.ca` (~$15/yr from any
 registrar) can be pointed at it under Settings → Pages → Custom domain.
 Hosting stays free.
 
-## 2. Give Slava and Alexander the admin
-
-1. Each owner creates their own free GitHub account.
-2. In the repo go to **Settings → Collaborators → Add people** and invite
-   both of them.
-3. Each owner opens https://app.pagescms.org, clicks **Sign in with GitHub**,
-   approves access, and picks the `vancouver-flooring` repository.
 
 ## 3. Adding a new job (owners)
 
