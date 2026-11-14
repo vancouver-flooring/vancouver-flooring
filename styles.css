@@ -20,9 +20,12 @@
 
 /* Dark theme: neutral charcoal with the same wood-tone accent.
    Declaring our own dark palette (plus the color-scheme meta tag in
-   index.html) stops browsers from auto-darkening the cream design into brown. */
+   index.html) stops browsers from auto-darkening the cream design into brown.
+   It follows the device setting unless the visitor picks a theme with the
+   switch in the top bar (stored as data-theme on <html>). Keep both blocks
+   identical. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #141516;
     --bg-alt: #1c1e20;
     --ink: #eeece8;
@@ -39,6 +42,38 @@
     color-scheme: dark;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #141516;
+  --bg-alt: #1c1e20;
+  --ink: #eeece8;
+  --muted: #a3a09a;
+  --accent: #c98a4e;
+  --accent-ink: #17120d;
+  --accent-hover: #d99c62;
+  --dark: #0d0e0f;
+  --dark-ink: #eeece8;
+  --line: rgba(255, 255, 255, .1);
+  --bar-bg: rgba(20, 21, 22, .88);
+  --bar-bg-solid: rgba(20, 21, 22, .97);
+  --mark-bg: #26282b;
+  color-scheme: dark;
+}
+
+body { transition: background-color .3s, color .3s; }
+
+/* Theme switch */
+.theme-toggle {
+  flex: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); cursor: pointer; display: grid; place-items: center;
+  margin-left: .6rem; transition: background .2s, border-color .2s, transform .3s;
+}
+.theme-toggle:hover { background: var(--bg-alt); border-color: var(--accent); }
+.theme-toggle:active { transform: rotate(-20deg); }
+.theme-toggle svg { width: 20px; height: 20px; grid-area: 1 / 1; transition: opacity .25s, transform .35s; }
+.theme-toggle .i-moon { opacity: 1; }
+.theme-toggle .i-sun { opacity: 0; transform: rotate(-90deg) scale(.6); }
+.is-dark .theme-toggle .i-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+.is-dark .theme-toggle .i-sun { opacity: 1; transform: none; color: #e3b17e; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -77,7 +112,8 @@ h3 { font-size: 1.2rem; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; font-family: var(--serif); font-weight: 600; font-size: 1.2rem; }
 .brand-text small { font-family: var(--sans); font-weight: 600; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 3px; }
 
-.nav { display: flex; align-items: center; gap: .3rem; }
+.nav { display: flex; align-items: center; gap: .3rem; margin-left: auto; }
+.bar-actions { display: flex; align-items: center; gap: .5rem; }
 .nav-link {
   position: relative; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .95rem;
   padding: .5rem .8rem; border-radius: 999px; transition: color .2s, background .2s;

@@ -167,6 +167,37 @@ function setHero() {
   else hero.classList.add("wood");
 }
 
+// Light/dark switch. Follows the device setting until the visitor picks
+// one; the pick is remembered in localStorage (applied early by the inline
+// script in <head> so there's no flash on load).
+function wireTheme() {
+  const root = document.documentElement;
+  const btn = $("themeToggle");
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const metas = document.querySelectorAll('meta[name="theme-color"]');
+  const isDark = () => {
+    const t = root.getAttribute("data-theme");
+    return t ? t === "dark" : mq.matches;
+  };
+  const sync = () => {
+    const dark = isDark();
+    root.classList.toggle("is-dark", dark);
+    btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    btn.title = btn.getAttribute("aria-label");
+    if (root.hasAttribute("data-theme")) {
+      metas.forEach((m) => { m.content = dark ? "#141516" : "#f5efe6"; });
+    }
+  };
+  btn.addEventListener("click", () => {
+    const next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    sync();
+  });
+  mq.addEventListener("change", sync);
+  sync();
+}
+
 function wireNav() {
   const bar = $("topbar"), nav = $("nav"), toggle = $("navToggle");
   const setOpen = (open) => {
@@ -194,6 +225,7 @@ function wireNav() {
 }
 
 async function init() {
+  wireTheme();
   wireNav();
   const [site, gallery] = await Promise.all([
     loadJson("data/site.json", {}),
