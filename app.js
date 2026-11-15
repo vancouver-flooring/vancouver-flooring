@@ -24,6 +24,29 @@ function mediaUrl(path) {
 
 const isVideo = (path) => VIDEO_EXT.test(path || "");
 
+// YouTube links pasted in the admin: watch?v=, youtu.be/, shorts/, embed/, live/
+const YT_RE = /(?:youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([\w-]{11})/i;
+const youtubeId = (item) => ((item.youtube || "").match(YT_RE) || [])[1] || "";
+const hasVideo = (item) => !!youtubeId(item) || isVideo(item.media);
+
+function youtubeEl(item, id, { controls, thumb }) {
+  if (controls) {
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+    f.title = item.title || "Video";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.referrerPolicy = "strict-origin-when-cross-origin"; // YouTube refuses embeds without it (error 153)
+    f.className = "yt" + (/\/shorts\//i.test(item.youtube) ? " is-short" : "");
+    return f;
+  }
+  // Cover: the owners' own photo if they uploaded one, else YouTube's thumbnail
+  const img = document.createElement("img");
+  img.src = item.media && !isVideo(item.media) ? mediaUrl(item.media) : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  img.alt = altText(item);
+  img.loading = thumb ? "lazy" : "eager";
+  return img;
+}
+
 async function loadJson(path, fallback) {
   try {
     const res = await fetch(path, { cache: "no-cache" });
@@ -75,6 +98,8 @@ function altText(item) {
 }
 
 function mediaEl(item, { controls = false, thumb = false } = {}) {
+  const yt = youtubeId(item);
+  if (yt) return youtubeEl(item, yt, { controls, thumb });
   const src = mediaUrl(item.media);
   if (!src) {
     const d = document.createElement("div");
@@ -122,7 +147,7 @@ function renderGrid() {
     t.className = "tile";
     t.setAttribute("aria-label", "Open " + (item.title || "project"));
     t.appendChild(mediaEl(item, { thumb: true }));
-    if (isVideo(item.media)) {
+    if (hasVideo(item)) {
       const p = document.createElement("span");
       p.className = "play";
       p.textContent = "▶";

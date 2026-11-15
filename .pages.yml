@@ -1,7 +1,7 @@
 # Pages CMS admin configuration — https://pagescms.org
 # Slava and Alexander log in at https://app.pagescms.org with GitHub
 # and edit the two entries below. Saving commits to this repo and
-# GitHub Pages republishes the site in about a minute.
+# Cloudflare Pages republishes the site in about a minute.
 
 media:
   input: media
@@ -27,6 +27,10 @@ content:
         options:
           categories: [image, video]
           extensions: [jpg, jpeg, png, webp, mp4, mov, webm, m4v]
+      - name: youtube
+        label: YouTube link (optional)
+        description: "Paste a YouTube or YouTube Shorts link (Share → Copy link). The video plays on the site; a photo uploaded above is used as its cover, otherwise YouTube's thumbnail is."
+        type: string
       - name: category
         label: Flooring type
         type: select

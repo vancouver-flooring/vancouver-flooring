@@ -51,8 +51,12 @@ Tips
 - Tick **Use as the big photo at the top** on your best shot.
 - Tick **Hide from the site** to take an item down without deleting it.
 - Keep each video under 25 MB (about 20–30 seconds of phone video).
-  Cloudflare won't serve bigger files. Put longer videos on YouTube.
-  Photos straight off a phone are fine.
+  Cloudflare won't serve bigger files. Photos straight off a phone are fine.
+- For longer videos, upload them to YouTube, then paste the link
+  (Share → Copy link) into **YouTube link**. Regular videos and Shorts both
+  work. If you also upload a photo, it's shown as the video's cover;
+  otherwise YouTube's thumbnail is used. "Unlisted" videos work too if you
+  don't want them on your YouTube channel page.
 - The newest job (by date) shows first.
 
 ## Preview on your own computer
