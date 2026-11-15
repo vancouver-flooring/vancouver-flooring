@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vancouver-flooring.github.io/vancouver-flooring/sitemap.xml
+Sitemap: https://vancouver-flooring.pages.dev/sitemap.xml

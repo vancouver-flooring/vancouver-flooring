@@ -22,7 +22,7 @@ content:
         required: true
       - name: media
         label: Photo or video
-        description: "JPG/PNG photo or MP4/MOV video (keep videos under ~90 MB)."
+        description: "JPG/PNG photo or MP4/MOV video . Videos must be under 25 MB (about 20–30 seconds); put longer ones on YouTube."
         type: file
         options:
           categories: [image, video]

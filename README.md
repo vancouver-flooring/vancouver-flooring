@@ -1,8 +1,9 @@
 # Vancouver Flooring — website
 
 A one-page site for Slava & Alexander. It's plain HTML/CSS/JS with no build
-step. It's hosted for free on **GitHub Pages**, and the owners edit it through
-**Pages CMS**, a free admin page.
+step. The files live on **GitHub**, it's hosted for free on **Cloudflare
+Pages** at https://vancouver-flooring.pages.dev/, and the owners edit it
+through **Pages CMS**, a free admin page.
 
 ```
 index.html  styles.css  app.js     the page
@@ -19,14 +20,21 @@ media/                             uploaded photos and videos
 3. Upload every file in this folder. Make sure the hidden ones (`.pages.yml`,
    `.nojekyll`) go too. The easiest way is to drag the folder into the
    repo's "Add file → Upload files" page, or use GitHub Desktop.
-4. In the repo go to **Settings → Pages**. Under "Build and deployment",
-   choose *Deploy from a branch*, pick `main` and `/ (root)`, then Save.
+4. At https://dash.cloudflare.com go to **Workers & Pages → Create →
+   Pages → Import an existing Git repository**, connect GitHub and pick the
+   repo. Leave the framework preset as *None* and the build command and
+   output directory empty, then click **Save and Deploy**.
 5. About a minute later the site is live at
-   `https://<username>.github.io/vancouver-flooring/`.
+   `https://<project-name>.pages.dev/`. Every commit to `main`, including
+   saves from the admin, redeploys it automatically.
 
-Optional: a custom domain such as `vancouverflooring.ca` (~$15/yr from any
-registrar) can be pointed at it under Settings → Pages → Custom domain.
-Hosting stays free.
+The old GitHub Pages address (`vancouver-flooring.github.io/vancouver-flooring/`)
+stays switched on only to redirect visitors to the new address.
+
+Optional: a custom domain such as `vancouverflooring.ca` (~$15/yr) can be
+added in Cloudflare under the project's **Custom domains** tab. Hosting
+stays free. If you add one, replace `vancouver-flooring.pages.dev` in
+`index.html`, `robots.txt` and `sitemap.xml`.
 
 
 ## 3. Adding a new job (owners)
@@ -42,8 +50,9 @@ To change the phone number, email or hours, open **Contact info & text**.
 Tips
 - Tick **Use as the big photo at the top** on your best shot.
 - Tick **Hide from the site** to take an item down without deleting it.
-- Keep each video under about 90 MB (a 1–2 minute phone clip). GitHub
-  refuses files over 100 MB. Photos straight off a phone are fine.
+- Keep each video under 25 MB (about 20–30 seconds of phone video).
+  Cloudflare won't serve bigger files. Put longer videos on YouTube.
+  Photos straight off a phone are fine.
 - The newest job (by date) shows first.
 
 ## Preview on your own computer
